@@ -9,4 +9,3 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 CMD [ "mvn", "spring-boot:run" ]
-
