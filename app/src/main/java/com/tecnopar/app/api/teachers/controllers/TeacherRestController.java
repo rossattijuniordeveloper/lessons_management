@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tecnopar.app.api.common.routes.ApiRoutes;
+//import com.tecnopar.app.api.common.routes.ApiRoutes;
+import main.java.com.tecnopar.app.api.common.routes.ApiRoutes;
 import com.tecnopar.app.api.teachers.dtos.TeacherResponse;
 import com.tecnopar.app.api.teachers.services.TeacherService;
 
