@@ -5,5 +5,6 @@ import java.util.List;
 import com.tecnopar.app.api.teachers.dtos.TeacherResponse;
 
 public interface TeacherService {    
-    List<TeacherResponse> LisTeacher (String description);
+    List<TeacherResponse> listTeacher (String description);
+    TeacherResponse findTeacherById(Long teacherId);
 }

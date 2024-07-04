@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tecnopar.app.api.teachers.dtos.TeacherResponse;
@@ -19,13 +20,18 @@ public class TeacherRestController {
     
     private final TeacherService teacherService;
 
-    @GetMapping(ApiRoutes.FIND_TEACHERS)
-    public List<TeacherResponse> LisTeacher(
+    @GetMapping(ApiRoutes.LIST_TEACHERS)
+    public List<TeacherResponse> listTeacher(
         @RequestParam(name = "q",required = false, defaultValue = "") String description
     ){
-        return teacherService.LisTeacher(description);
+        return teacherService.listTeacher(description);
     }
-
+    @GetMapping(ApiRoutes.FIND_TEACHERS_BY_ID)
+    public TeacherResponse findTeacherById(
+        @PathVariable Long professorId
+    ){
+        return teacherService.findTeacherById(professorId);
+    }
     
 
 }
