@@ -10,6 +10,7 @@ import com.tecnopar.app.api.teachers.dtos.TeacherResponse;
 import com.tecnopar.app.api.teachers.services.TeacherService;
 
 import lombok.RequiredArgsConstructor;
+import main.java.com.tecnopar.app.api.common.routes.ApiRoutes;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class TeacherRestController {
     
     private final TeacherService teacherService;
 
-    @GetMapping("/api/professores")
+    @GetMapping(ApiRoutes.FIND_TEACHERS)
     public List<TeacherResponse> LisTeacher(
         @RequestParam(name = "q",required = false, defaultValue = "") String description
     ){
