@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.tecnopar.app.api.common.routes.ApiRoutes;
-import main.java.com.tecnopar.app.api.common.routes.ApiRoutes;
+import com.tecnopar.app.api.common.routes.AppRoutes;
 import com.tecnopar.app.api.teachers.dtos.TeacherResponse;
 import com.tecnopar.app.api.teachers.services.TeacherService;
 
@@ -23,13 +22,14 @@ public class TeacherRestController {
     @Autowired
     private final TeacherService teacherService;
 
-    @GetMapping(ApiRoutes.LIST_TEACHERS)
+    @GetMapping(AppRoutes.LIST_TEACHERS)
     public List<TeacherResponse> listTeacher(
         @RequestParam(name = "q",required = false, defaultValue = "") String description
     ){
         return teacherService.listTeacher(description);
     }
-    @GetMapping(ApiRoutes.FIND_TEACHERS_BY_ID)
+    
+    @GetMapping(AppRoutes.FIND_TEACHERS_BY_ID)
     public TeacherResponse findTeacherById(
         @PathVariable Long professorId
     ){
