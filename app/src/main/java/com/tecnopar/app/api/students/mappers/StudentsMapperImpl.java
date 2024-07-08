@@ -16,9 +16,9 @@ public class StudentsMapperImpl implements StudentsMapper {
             return null;
         }
         return Students.builder()
-            .name(studentsRequest.getName())
+            .name(studentsRequest.getNome())
             .email(studentsRequest.getEmail())
-            .lessonDate(studentsRequest.getLessonDate())
+            .lessonDate(studentsRequest.getData_aula())
             .build();
     }
 

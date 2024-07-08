@@ -1,8 +1,7 @@
-package main.java.com.tecnopar.app.core.models.exceptions;
-
-
+package com.tecnopar.app.core.models.exceptions;
 
 public class TeacherNotFoundException extends ModelNotFoundException {
+
     public TeacherNotFoundException() {
         super("Professor não encontrado!");
    }

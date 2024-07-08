@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.tecnopar.app.api.teachers.dtos.TeacherResponse;
 import com.tecnopar.app.api.teachers.mappers.TeacherMapper;
+import com.tecnopar.app.core.models.exceptions.TeacherNotFoundException;
 import com.tecnopar.app.core.repositories.TeacherRepository;
-import main.java.com.tecnopar.app.core.models.exceptions.TeacherNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 

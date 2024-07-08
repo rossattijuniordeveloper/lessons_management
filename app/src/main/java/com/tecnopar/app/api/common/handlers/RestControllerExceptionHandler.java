@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import main.java.com.tecnopar.app.core.models.exceptions.ModelNotFoundException;
-
 import com.tecnopar.app.api.common.dtos.ErrorResponse;
+import com.tecnopar.app.core.models.exceptions.ModelNotFoundException;
 
 //import com.tecnopar.app.core.models.exceptions.ModelNotFoundException;
 

@@ -8,7 +8,7 @@ info:
     url: https://www.tecnopar.com.py/contato
     email: contato@tecnopar.com.py
 servers:
-  - url: http://localhost:8081
+  - url: http://localhost:8080
     description: Servidor local
 tags:
   - name: Me

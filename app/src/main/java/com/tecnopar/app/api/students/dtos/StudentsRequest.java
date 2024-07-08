@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
@@ -28,7 +29,8 @@ public class StudentsRequest {
     @NotNull
     @NotEmpty
     @Size(min = 3, max = 100)
-    private String name;
+    @Column(name = "name")
+    private String nome;
 
     @Email
     @NotNull
@@ -39,6 +41,7 @@ public class StudentsRequest {
     @Future
     @NotNull
     @DateTimeFormat(iso = ISO.DATE_TIME)
-    private LocalDateTime lessonDate;
+    @Column(name = "lesson_date")
+    private LocalDateTime data_aula;
     
 }
