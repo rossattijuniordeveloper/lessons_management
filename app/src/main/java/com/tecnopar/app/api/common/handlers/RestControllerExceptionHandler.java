@@ -24,6 +24,7 @@ public class RestControllerExceptionHandler extends ResponseEntityExceptionHandl
 				WebRequest request 
 		){
 			var status = HttpStatus.NOT_FOUND;
+			@SuppressWarnings("unused")
 			var body = ErrorResponse
 					.builder()
 					.status(status.value())
@@ -32,6 +33,6 @@ public class RestControllerExceptionHandler extends ResponseEntityExceptionHandl
 					.cause(exception.getClass().getSimpleName())
 					.timestamp(LocalDateTime.now())
 					.build();
-			return new ResponseEntity<ErrorResponse>(status);
+			return new ResponseEntity<ErrorResponse>(body,status);
 		}
 }
