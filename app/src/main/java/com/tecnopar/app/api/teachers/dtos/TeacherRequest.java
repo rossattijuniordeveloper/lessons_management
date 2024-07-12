@@ -2,6 +2,8 @@ package com.tecnopar.app.api.teachers.dtos;
 
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -33,6 +35,7 @@ public class TeacherRequest {
     @NotEmpty
     @NotNull
     @Email
+    @UniqueElements
     @Size(min = 3, max = 255)
     private String email;
 

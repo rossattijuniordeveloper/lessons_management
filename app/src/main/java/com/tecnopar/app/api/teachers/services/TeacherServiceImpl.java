@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.tecnopar.app.api.teachers.dtos.TeacherRequest;
 import com.tecnopar.app.api.teachers.dtos.TeacherResponse;
 import com.tecnopar.app.api.teachers.mappers.TeacherMapper;
 import com.tecnopar.app.core.models.exceptions.TeacherNotFoundException;
@@ -19,17 +20,23 @@ public class TeacherServiceImpl implements TeacherService {
     private final TeacherRepository teacherRepository;
 
     @Override
-    public List<TeacherResponse> listTeacher(String description) {
+    public List<TeacherResponse> teacherList(String description) {
         return teacherRepository.findByDescriptionContaining(description)
             .stream()
             .map(teacherMapper::toTeacherResponse)
             .toList();
     }
     @Override
-    public TeacherResponse findTeacherById(Long teacherId){
+    public TeacherResponse teacherFindById(Long teacherId){
         return teacherRepository.findById(teacherId)
         .map(teacherMapper::toTeacherResponse)
         .orElseThrow(TeacherNotFoundException::new);
+    }
+    @Override
+    public TeacherResponse teacherInclude(TeacherRequest teacherRequest) {
+        var teacherToInclude = teacherMapper.toTeacher(teacherRequest);
+        var teacherIncluded  = teacherRepository.save(teacherToInclude);                
+        return teacherMapper.toTeacherResponse(teacherIncluded);            
     }
     
 }
