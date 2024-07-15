@@ -34,9 +34,14 @@ public class TeacherServiceImpl implements TeacherService {
     }
     @Override
     public TeacherResponse teacherInclude(TeacherRequest teacherRequest) {
-        var teacherToInclude = teacherMapper.toTeacher(teacherRequest);
-        var teacherIncluded  = teacherRepository.save(teacherToInclude);                
-        return teacherMapper.toTeacherResponse(teacherIncluded);            
+        if(teacherRequest.getSenha().equals(teacherRequest.getSenhaConfirmacao()))
+        {
+            var teacherToInclude = teacherMapper.toTeacher(teacherRequest);
+            var teacherIncluded  = teacherRepository.save(teacherToInclude);                
+            return teacherMapper.toTeacherResponse(teacherIncluded);  
+        } else {
+            throw new IllegalArgumentException("as senhas não conferem !");
+        }         
     }
     
 }
