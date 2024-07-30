@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.tecnopar.app.api.teachers.validators.TeacherEmailIsUnique;
 import com.tecnopar.app.core.validators.FieldsAreEquals;
 
 import jakarta.persistence.Column;
@@ -35,8 +36,7 @@ public class TeacherRequest {
     @NotEmpty
     @NotNull
     @Email
-    //@UniqueElements
-    //@TeacherEmailsUnique;
+    @TeacherEmailIsUnique
     @Size(min = 3, max = 255)
     private String email;
 
