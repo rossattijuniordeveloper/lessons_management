@@ -34,7 +34,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
     @Override
     public TeacherResponse teacherInclude(TeacherRequest teacherRequest) {
-        if(teacherRequest.getSenha().equals(teacherRequest.getSenhaConfirmacao()))
+        if(teacherRequest.getPassword().equals(teacherRequest.getPassword_confirmation()))
         {
             var teacherToInclude = teacherMapper.toTeacher(teacherRequest);
             var teacherIncluded  = teacherRepository.save(teacherToInclude);                

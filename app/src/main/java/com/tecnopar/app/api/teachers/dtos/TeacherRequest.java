@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.tecnopar.app.core.validators.FieldsAreEquals;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
@@ -22,6 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonNaming(SnakeCaseStrategy.class)
+@FieldsAreEquals(field = "password",fieldMatch = "password_confirmation")
 public class TeacherRequest {
 
     @NotNull
@@ -34,6 +36,7 @@ public class TeacherRequest {
     @NotNull
     @Email
     //@UniqueElements
+    //@TeacherEmailsUnique;
     @Size(min = 3, max = 255)
     private String email;
 
@@ -42,7 +45,6 @@ public class TeacherRequest {
     @Max(120)
     @Column(name = "age")
     private int idade;
-
 
     @NotNull
     @NotEmpty
@@ -60,11 +62,11 @@ public class TeacherRequest {
     @NotEmpty
     @Size(min = 6,max = 255)
     @Column(name = "password")
-    private String senha;
+    private String password;
 
     @NotNull
     @NotEmpty
     @Size(min = 6,max = 255)
     @Column(name = "password")
-    private String senhaConfirmacao;
+    private String password_confirmation;
 }

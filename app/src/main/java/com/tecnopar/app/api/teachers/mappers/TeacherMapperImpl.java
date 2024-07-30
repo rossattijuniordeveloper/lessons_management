@@ -38,7 +38,7 @@ public class TeacherMapperImpl implements TeacherMapper {
         .age(teacherRequest.getIdade())
         .description(teacherRequest.getDescricao())
         .priceTime(teacherRequest.getValorHora())
-        .password(teacherRequest.getSenha())
+        .password(teacherRequest.getPassword())
         .build();
     }
 
