@@ -2,6 +2,7 @@ package com.tecnopar.app.api.teachers.services;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tecnopar.app.api.teachers.dtos.TeacherRequest;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class TeacherServiceImpl implements TeacherService {
 
     private final TeacherMapper teacherMapper;
+    private final PasswordEncoder passwordEncoder;
     private final TeacherRepository teacherRepository;
 
     @Override
@@ -34,14 +36,21 @@ public class TeacherServiceImpl implements TeacherService {
     }
     @Override
     public TeacherResponse teacherInclude(TeacherRequest teacherRequest) {
-        if(teacherRequest.getPassword().equals(teacherRequest.getPassword_confirmation()))
-        {
-            var teacherToInclude = teacherMapper.toTeacher(teacherRequest);
-            var teacherIncluded  = teacherRepository.save(teacherToInclude);                
-            return teacherMapper.toTeacherResponse(teacherIncluded);  
-        } else {
-            throw new IllegalArgumentException("as senhas não conferem !");
-        }         
+
+        var teacherToInclude = teacherMapper.toTeacher(teacherRequest);
+        teacherToInclude.setPassword(passwordEncoder.encode(teacherToInclude.getPassword()));
+        var teacherIncluded  = teacherRepository.save(teacherToInclude);                
+        return teacherMapper.toTeacherResponse(teacherIncluded);  
+
+        // forma anterior que verificava as senhas aqui mesmo, substituido por Bean Validation (FieldsAreEquals)
+        // if(teacherRequest.getPassword().equals(teacherRequest.getPassword_confirmation()))
+        // {
+        //     var teacherToInclude = teacherMapper.toTeacher(teacherRequest);
+        //     var teacherIncluded  = teacherRepository.save(teacherToInclude);                
+        //     return teacherMapper.toTeacherResponse(teacherIncluded);  
+        // } else {
+        //     throw new IllegalArgumentException("as senhas não conferem !");
+        // }         
     }
     
 }
