@@ -1,4 +1,4 @@
-package com.tecnopar.app.core.services;
+package com.tecnopar.app.core.services.authentication;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
